@@ -1,0 +1,84 @@
+<?xml version="1.0" encoding="utf-8"?>
+<layout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools">
+
+    <data>
+
+        <variable
+            name="data"
+            type="com.nino.productsapp.domain.ProductListItem" />
+
+        <variable
+            name="clickListener"
+            type="com.nino.productsapp.views.productList.ClickListener" />
+    </data>
+
+
+    <androidx.appcompat.widget.LinearLayoutCompat
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_margin="10dp"
+        android:orientation="vertical">
+
+        <com.google.android.material.card.MaterialCardView
+            android:layout_width="match_parent"
+            android:layout_height="200dp"
+            android:onClick="@{() -> clickListener.onClick(data)}"
+            app:cardCornerRadius="18dp"
+            app:cardElevation="0dp">
+
+            <ImageView
+                android:id="@+id/image"
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:adjustViewBounds="true"
+                android:scaleType="centerCrop"
+                app:thumbnail="@{data.thumbnail}" />
+
+        </com.google.android.material.card.MaterialCardView>
+
+        <TextView
+            android:id="@+id/title"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:ellipsize="end"
+            android:fontFamily="@font/regular"
+            android:layout_marginHorizontal="10dp"
+            android:text="@{data.title}"
+            android:textColor="@color/black"
+            android:textSize="14sp"
+            tools:text="Text Here" />
+
+        <TextView
+            android:id="@+id/price"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="5dp"
+            android:fontFamily="@font/bold"
+            android:layout_marginHorizontal="10dp"
+            android:text="@{data.getPriceDisplay()}"
+            android:textColor="@color/black"
+            android:textSize="14sp"
+            tools:text="Text Here" />
+
+        <TextView
+            android:id="@+id/category"
+            android:background="@drawable/bg_rounded_rectangle"
+            android:layout_width="wrap_content"
+            android:gravity="center"
+            android:layout_height="wrap_content"
+            android:backgroundTint="@color/black"
+            android:fontFamily="@font/bold"
+            android:layout_marginTop="10dp"
+            android:paddingHorizontal="12dp"
+            android:paddingVertical="5dp"
+            android:layout_marginHorizontal="10dp"
+            android:text="@{data.category}"
+            android:textColor="@color/white"
+            android:textSize="11sp"
+            tools:text="Text Here" />
+    </androidx.appcompat.widget.LinearLayoutCompat>
+
+
+</layout>

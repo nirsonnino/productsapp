@@ -1,0 +1,41 @@
+<?xml version="1.0" encoding="utf-8"?>
+<layout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools">
+
+    <data>
+
+        <variable
+            name="data"
+            type="String" />
+
+        <variable
+            name="clickListener"
+            type="com.nino.productsapp.views.productList.ItemClickListener" />
+    </data>
+
+    <com.google.android.material.card.MaterialCardView
+        android:id="@+id/container"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_margin="10dp"
+        android:onClick="@{() -> clickListener.onClick(data)}"
+        app:cardCornerRadius="18dp"
+        app:cardBackgroundColor="@color/white"
+        app:cardElevation="0dp">
+
+        <TextView
+            android:id="@+id/label"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:padding="10dp"
+            android:fontFamily="@font/regular"
+            android:text="@{data}"
+            android:textAllCaps="true"
+            android:textColor="@color/black"
+            android:textSize="14sp"
+            tools:text="text here" />
+
+    </com.google.android.material.card.MaterialCardView>
+
+</layout>
