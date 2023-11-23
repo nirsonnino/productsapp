@@ -17,10 +17,12 @@ class ProductListViewModel @Inject constructor(
     val data = repo.products
 
     init {
-        viewModelScope.launch(Dispatchers.IO) {
-            repo.refreshProductList()
-        }
+        refreshProducts(10)
     }
 
-    fun getProductsByCategory(category: String) = if (category.lowercase(Locale.ROOT) == "all") repo.products else repo.getProductsByCategory(category)
+    fun refreshProducts(limit: Int) {
+        viewModelScope.launch(Dispatchers.IO) {
+            repo.refreshProductList(limit)
+        }
+    }
 }

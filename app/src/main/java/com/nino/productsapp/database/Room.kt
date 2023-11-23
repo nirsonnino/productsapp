@@ -17,6 +17,9 @@ interface ProductsDao {
 
     @Query("select * from DatabaseProductDetails WHERE category LIKE :category")
     fun getProductsByCategory(category: String): LiveData<List<DatabaseProductDetails>>
+
+    @Query("delete from DatabaseProductDetails")
+    fun deleteProducts()
 }
 
 @Database(entities = [DatabaseProductDetails::class], version = 1, exportSchema = false)

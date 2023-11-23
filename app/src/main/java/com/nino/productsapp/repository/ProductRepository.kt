@@ -28,9 +28,9 @@ class ProductRepository @Inject constructor(
     fun getProductsByCategory(category: String) =
         database.productsDao.getProductsByCategory(category).map { it.asListDomainModel() }
 
-    suspend fun refreshProductList() {
+    suspend fun refreshProductList(limit: Int) {
         try {
-            val products = productService.getProducts().products
+            val products = productService.getProducts(limit).products
             database.productsDao.insertAll(products.asDatabaseModel())
         } catch (e: Exception) {
             Timber.w(e)
